@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class Reachability;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    BOOL internetActive;
+}
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic, retain) Reachability* internetReachable;
+@property (nonatomic, retain) Reachability* hostReachable;
+@property (nonatomic, retain) NSString *isWirelessAvailable;
 
 @end
 
