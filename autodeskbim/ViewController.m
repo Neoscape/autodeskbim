@@ -285,13 +285,16 @@ static NSUInteger kFrameFixer = 1;
 - (void)createSlider
 {
     uisl_timerBar = [UISlider new];
-    uisl_timerBar.frame = CGRectMake(250.0, 0.0, 500.0, 40.0);
+    uisl_timerBar.frame = CGRectMake(207.0, 0.0, 610.0, 40.0);
     uisl_timerBar.translatesAutoresizingMaskIntoConstraints = NO;
     [uisl_timerBar setBackgroundColor:[UIColor clearColor]];
     uisl_timerBar.minimumValue = 0.0;
     uisl_timerBar.maximumValue = CMTimeGetSeconds([[myAVPlayer.currentItem asset] duration]);
     uisl_timerBar.continuous = YES;
     uisl_timerBar.tag = 1;
+    [uisl_timerBar setThumbImage:[UIImage imageNamed:@"grfx-playhead.png"] forState:UIControlStateNormal];
+    [uisl_timerBar setMinimumTrackTintColor:[UIColor colorWithRed:90.0/255.0 green:149.0/255. blue:230.0/255.0 alpha:1.0]];
+    [uisl_timerBar setMaximumTrackTintColor:[UIColor whiteColor]];
     [uisl_timerBar addTarget:self action:@selector(sliding:) forControlEvents:UIControlEventValueChanged];
     [uisl_timerBar addTarget:self action:@selector(finishedSliding:) forControlEvents:(UIControlEventTouchUpInside | UIControlEventTouchUpOutside)];
     [uiv_myPlayerContainer addSubview:uisl_timerBar];
@@ -619,8 +622,10 @@ static NSUInteger kFrameFixer = 1;
         profilePlayer = [[AVPlayer alloc] initWithPlayerItem:profileItem];
         profilePlayerLayer = [AVPlayerLayer playerLayerWithPlayer:profilePlayer];
         profilePlayerLayer.frame = uiv_myPlayerContainer.frame;
-        profilePlayerLayer.transform = CATransform3DMakeScale(0.9, 0.9, 1.0);
+        profilePlayerLayer.transform = CATransform3DMakeScale(0.95, 0.95, 1.0);
         [uiv_detailVideoContainer.layer addSublayer: profilePlayerLayer];
+        profilePlayerLayer.cornerRadius = 10;
+        profilePlayerLayer.masksToBounds = YES;
         
         // Fade in animation to profile movie player
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -646,9 +651,10 @@ static NSUInteger kFrameFixer = 1;
 - (void)addSliderToProfileMovie
 {
     uisl_profileTimeBar = [UISlider new];
-    uisl_profileTimeBar.frame = CGRectMake(250.0, 80.0, 500.0, 40.0);
+    uisl_profileTimeBar.frame = CGRectMake(207.0, 625.0, 610.0, 40.0);
     uisl_profileTimeBar.translatesAutoresizingMaskIntoConstraints = NO;
-    [uisl_profileTimeBar setBackgroundColor:[UIColor whiteColor]];
+    [uisl_profileTimeBar setBackgroundColor:[UIColor redColor]];
+    [uisl_profileTimeBar setThumbImage:[UIImage imageNamed:@"grfx-playhead.png"] forState:UIControlStateNormal];
     uisl_profileTimeBar.minimumValue = 0.0;
     uisl_profileTimeBar.maximumValue = CMTimeGetSeconds([[myAVPlayer.currentItem asset] duration]);
     uisl_profileTimeBar.continuous = YES;
