@@ -19,6 +19,8 @@ static NSUInteger kFrameFixer = 1;
 
 @implementation ViewController
 {
+    UIColor                         *color_theme;
+    
     UIButton                        *uib_closeMainPlayer;
     UISlider                        *uisl_timerBar;
     NSTimer                         *sliederTimer;
@@ -36,12 +38,12 @@ static NSUInteger kFrameFixer = 1;
     UIView                          *uiv_profileContainer;
     UIButton                        *uib_userProfile;
     UIImageView                     *uiiv_profileDetail;
-    UIView                          *uiv_detailVideoContainer;
+    UIView                          *uiv_detailViewContainer;
+    UIView                          *uiv_profileVideoContainer;
     UITapGestureRecognizer          *tapDetailVideo;
     UISlider                        *uisl_profileTimeBar;
     UISwipeGestureRecognizer        *swipeProfileMovieUp;
     UISwipeGestureRecognizer        *swipeProfileMovieDown;
-
 }
 
 //logo image
@@ -55,6 +57,8 @@ static NSUInteger kFrameFixer = 1;
 @synthesize uiv_movieViewTop, uiv_movieViewBottom, uiv_movieViewBlack, movieBtns, arr_Timecode;
 // Version label
 @synthesize uil_version;
+// Logo
+@synthesize autodesk_logo;
 
 - (BOOL)prefersStatusBarHidden
 {
@@ -71,6 +75,9 @@ static NSUInteger kFrameFixer = 1;
 -(void)viewDidLoad {
     
     [UIApplication sharedApplication].statusBarHidden = YES;
+    
+    color_theme = [UIColor colorWithRed:96.0/255.0 green:125.0/255.0 blue:163.0/255.0 alpha:1.0];
+    
     // make black moviethumb transparent
     uiv_movieViewBlack.alpha = 0.0;
     
@@ -165,6 +172,11 @@ static NSUInteger kFrameFixer = 1;
                          uiv_movieViewTop.layer.shadowRadius = 5;
                          uiv_movieViewTop.layer.shadowOpacity = 0.25;
                          uiv_movieViewTop.layer.shadowPath = [UIBezierPath bezierPathWithRect:uiv_movieViewTop.bounds].CGPath;
+                         
+                         // Shrink Autodesk logo
+                         CGAffineTransform shrink = CGAffineTransformMakeScale(0.8, 0.8);
+                         CGAffineTransform move = CGAffineTransformTranslate(shrink, 0.0, -50.0);
+                         autodesk_logo.transform = move;
                      }
                      completion:^(BOOL finished) {
                          [self.view addSubview: uiv_myPlayerContainer];
@@ -241,6 +253,7 @@ static NSUInteger kFrameFixer = 1;
                          [self.view bringSubviewToFront:uib_playBtn2];
                          [self.view bringSubviewToFront:uib_playBtn1];
                          
+                         autodesk_logo.transform = CGAffineTransformIdentity;
                      }
                      completion:^(BOOL finished) {
                          uib_playBtn1.hidden = NO;
@@ -293,7 +306,7 @@ static NSUInteger kFrameFixer = 1;
     uisl_timerBar.continuous = YES;
     uisl_timerBar.tag = 1;
     [uisl_timerBar setThumbImage:[UIImage imageNamed:@"grfx-playhead.png"] forState:UIControlStateNormal];
-    [uisl_timerBar setMinimumTrackTintColor:[UIColor colorWithRed:90.0/255.0 green:149.0/255. blue:230.0/255.0 alpha:1.0]];
+    [uisl_timerBar setMinimumTrackTintColor:color_theme];
     [uisl_timerBar setMaximumTrackTintColor:[UIColor whiteColor]];
     [uisl_timerBar addTarget:self action:@selector(sliding:) forControlEvents:UIControlEventValueChanged];
     [uisl_timerBar addTarget:self action:@selector(finishedSliding:) forControlEvents:(UIControlEventTouchUpInside | UIControlEventTouchUpOutside)];
@@ -366,7 +379,7 @@ static NSUInteger kFrameFixer = 1;
 - (void)updateSliderAndTimelabel
 {
     // If porfile movie is loaded then only loop profile movie
-    if (uiv_detailVideoContainer.frame.size.width > 1000) {
+    if (uiv_detailViewContainer.frame.size.width > 1000) {
         uisl_profileTimeBar.maximumValue = CMTimeGetSeconds([[profilePlayer.currentItem asset] duration]);
         uisl_profileTimeBar.value = CMTimeGetSeconds(profilePlayer.currentTime);
     }
@@ -511,14 +524,14 @@ static NSUInteger kFrameFixer = 1;
     [uiv_profileContainer addSubview: uiiv_profileDetail];
     
     // Profile AVPlayer
-    uiv_detailVideoContainer = [[UIView alloc] initWithFrame: CGRectMake(20, 55, 200, 200)];
-    uiv_detailVideoContainer.backgroundColor = [UIColor clearColor];
-    [uiv_profileContainer insertSubview:uiv_detailVideoContainer aboveSubview:uiiv_profileDetail];
-    uiv_detailVideoContainer.hidden = YES;
-    uiv_detailVideoContainer.userInteractionEnabled = YES;
+    uiv_detailViewContainer = [[UIView alloc] initWithFrame: CGRectMake(20, 55, 200, 200)];
+    uiv_detailViewContainer.backgroundColor = [UIColor clearColor];
+    [uiv_profileContainer insertSubview:uiv_detailViewContainer aboveSubview:uiiv_profileDetail];
+    uiv_detailViewContainer.hidden = YES;
+    uiv_detailViewContainer.userInteractionEnabled = YES;
     tapDetailVideo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapVideoDetail:)];
-    [uiv_detailVideoContainer addGestureRecognizer:tapDetailVideo];
-    uiv_detailVideoContainer.tag = index;
+    [uiv_detailViewContainer addGestureRecognizer:tapDetailVideo];
+    uiv_detailViewContainer.tag = index;
     
     //Close Profile Detail button
     uib_closeProfile = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -532,7 +545,7 @@ static NSUInteger kFrameFixer = 1;
 #pragma mark Close profile detail action
 - (void)closeProfile:(id)sender
 {
-    if (uiv_detailVideoContainer.hidden)
+    if (uiv_detailViewContainer.hidden)
     {
         return;
     }
@@ -552,7 +565,7 @@ static NSUInteger kFrameFixer = 1;
     } completion:^(BOOL finished){
         [UIView animateWithDuration:0.33 animations:^{
             uiv_profileContainer.frame = CGRectMake(885.0, 500.0, 137.0, 142.0);
-            uiv_detailVideoContainer.hidden = YES;
+            uiv_detailViewContainer.hidden = YES;
         }];
     }];
 }
@@ -575,8 +588,8 @@ static NSUInteger kFrameFixer = 1;
             uiv_profileContainer.frame = CGRectMake(1024 - uiiv_profileDetail.frame.size.width, 240.0, uiiv_profileDetail.frame.size.width, uiiv_profileDetail.frame.size.height);
             uib_userProfile.alpha = 0.0;
             uiiv_profileDetail.alpha = 1.0;
-            [uiv_detailVideoContainer addGestureRecognizer:tapDetailVideo];
-            uiv_detailVideoContainer.hidden = NO;
+            [uiv_detailViewContainer addGestureRecognizer:tapDetailVideo];
+            uiv_detailViewContainer.hidden = NO;
             uib_closeProfile.enabled = YES;
         }];
     }];
@@ -601,30 +614,67 @@ static NSUInteger kFrameFixer = 1;
         default:
             break;
     }
-    [uiv_detailVideoContainer removeFromSuperview];
-    [self.view addSubview: uiv_detailVideoContainer];
-    uiv_detailVideoContainer.frame = CGRectMake(825, 300, 181, 181);
+    [uiv_detailViewContainer removeFromSuperview];
+    [self.view addSubview: uiv_detailViewContainer];
+    uiv_detailViewContainer.frame = CGRectMake(812, 290, 200, 200);
     
     [UIView animateWithDuration:0.33 animations:^{
-        uiv_detailVideoContainer.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.6];
-        uiv_detailVideoContainer.frame = self.view.bounds;
+        uiv_detailViewContainer.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+        uiv_detailViewContainer.frame = self.view.bounds;
     }completion:^(BOOL finished){
-        [uiv_detailVideoContainer removeGestureRecognizer:tapDetailVideo];
+        [uiv_detailViewContainer removeGestureRecognizer:tapDetailVideo];
         
         // Set up profile movie player
+        if (uiv_profileVideoContainer != nil) {
+            [uiv_profileVideoContainer removeFromSuperview];
+            uiv_profileVideoContainer = nil;
+        }
         if (profilePlayerLayer != nil) {
             [profilePlayerLayer removeFromSuperlayer];
             profilePlayerLayer = nil;
             profilePlayer = nil;
             profileItem = nil;
         }
+        
+        uiv_profileVideoContainer = [[UIView alloc] initWithFrame:CGRectMake(37.0, 86.0, 945.0, 570.0)];
+        uiv_profileVideoContainer.backgroundColor = color_theme;
+        [uiv_detailViewContainer addSubview: uiv_profileVideoContainer];
+        uiv_profileVideoContainer.layer.cornerRadius = 10.0;
+        uiv_profileVideoContainer.layer.borderColor = [UIColor whiteColor].CGColor;
+        uiv_profileVideoContainer.layer.borderWidth = 2.0;
+        uiv_profileVideoContainer.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+        uiv_profileVideoContainer.layer.shadowRadius = 20.0;
+        uiv_profileVideoContainer.layer.shadowOpacity = 1.0;
+        uiv_profileVideoContainer.layer.shadowColor = [UIColor whiteColor].CGColor;
+        
+        uiv_profileVideoContainer.clipsToBounds = NO;
+        
+        UIImageView *uiiv_profileDots = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grfx-dot-detail.png"]];
+        uiiv_profileDots.frame = CGRectMake(16.0, 7.0, uiiv_profileDots.frame.size.width, uiiv_profileDots.frame.size.height);
+        [uiv_profileVideoContainer addSubview: uiiv_profileDots];
+        
+        UILabel *uil_profile = [[UILabel alloc] initWithFrame:CGRectMake(65.0, 8.0, 100.0, 24.0)];
+        uil_profile.backgroundColor = [UIColor clearColor];
+        [uil_profile setText:@"USER PROFILE"];
+        [uil_profile setFont:[UIFont fontWithName:@"TradeGothicLTStd-Cn18" size:16.0]];
+        [uil_profile setTextColor:[UIColor whiteColor]];
+        [uiv_profileVideoContainer addSubview: uil_profile];
+        
+        
         profileItem = [AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath: videoUrl]];
         profilePlayer = [[AVPlayer alloc] initWithPlayerItem:profileItem];
         profilePlayerLayer = [AVPlayerLayer playerLayerWithPlayer:profilePlayer];
-        profilePlayerLayer.frame = uiv_myPlayerContainer.frame;
-        profilePlayerLayer.transform = CATransform3DMakeScale(0.95, 0.95, 1.0);
-        [uiv_detailVideoContainer.layer addSublayer: profilePlayerLayer];
-        profilePlayerLayer.cornerRadius = 10;
+        profilePlayerLayer.frame = uiv_profileVideoContainer.bounds;
+        profilePlayerLayer.transform = CATransform3DMakeScale(1.0, 1.0, 1.0);
+        profilePlayerLayer.transform = CATransform3DMakeTranslation(0.0, 17.0, 0.0);
+        [uiv_profileVideoContainer.layer addSublayer: profilePlayerLayer];
+        profilePlayerLayer.cornerRadius = 35;
+//        profilePlayerLayer.borderWidth = 2.0;
+//        profilePlayerLayer.borderColor = [UIColor whiteColor].CGColor;
+//        profilePlayerLayer.shadowColor = [UIColor whiteColor].CGColor;
+//        profilePlayerLayer.shadowOffset = CGSizeMake(10.0, 10.0);
+//        profilePlayerLayer.shadowOpacity = 1.0;
+//        profilePlayerLayer.shadowRadius = 5.0;
         profilePlayerLayer.masksToBounds = YES;
         
         // Fade in animation to profile movie player
@@ -637,10 +687,10 @@ static NSUInteger kFrameFixer = 1;
         [profilePlayer play];
         
         UIButton *uib_detailClose = [UIButton buttonWithType:UIButtonTypeCustom];
-        uib_detailClose.frame = CGRectMake(50.0, 50.0, 50.0, 50.0);
-        uib_detailClose.backgroundColor = [UIColor blackColor];
-        [uib_detailClose setTitle:@"X" forState:UIControlStateNormal];
-        [uiv_detailVideoContainer addSubview: uib_detailClose];
+        uib_detailClose.frame = CGRectMake(925.0, 80.0, 50.0, 50.0);
+        uib_detailClose.backgroundColor = [UIColor clearColor];
+        [uib_detailClose setImage:[UIImage imageNamed:@"grfx-close.png"] forState:UIControlStateNormal];
+        [uiv_detailViewContainer addSubview: uib_detailClose];
         [uib_detailClose addTarget:self action:@selector(closeProfileMovie:) forControlEvents:UIControlEventTouchUpInside];
         [self createProfileMovieGesture];
         [self addSliderToProfileMovie];
@@ -651,17 +701,19 @@ static NSUInteger kFrameFixer = 1;
 - (void)addSliderToProfileMovie
 {
     uisl_profileTimeBar = [UISlider new];
-    uisl_profileTimeBar.frame = CGRectMake(207.0, 625.0, 610.0, 40.0);
+    uisl_profileTimeBar.frame = CGRectMake(207.0, 580.0, 610.0, 40.0);
     uisl_profileTimeBar.translatesAutoresizingMaskIntoConstraints = NO;
-    [uisl_profileTimeBar setBackgroundColor:[UIColor redColor]];
+    [uisl_profileTimeBar setBackgroundColor:[UIColor clearColor]];
     [uisl_profileTimeBar setThumbImage:[UIImage imageNamed:@"grfx-playhead.png"] forState:UIControlStateNormal];
+    [uisl_profileTimeBar setMinimumTrackTintColor:color_theme];
+    [uisl_profileTimeBar setMaximumTrackTintColor:[UIColor whiteColor]];
     uisl_profileTimeBar.minimumValue = 0.0;
     uisl_profileTimeBar.maximumValue = CMTimeGetSeconds([[myAVPlayer.currentItem asset] duration]);
     uisl_profileTimeBar.continuous = YES;
     uisl_profileTimeBar.tag = 2;
     [uisl_profileTimeBar addTarget:self action:@selector(sliding:) forControlEvents:UIControlEventValueChanged];
     [uisl_profileTimeBar addTarget:self action:@selector(finishedSliding:) forControlEvents:(UIControlEventTouchUpInside | UIControlEventTouchUpOutside)];
-    [uiv_detailVideoContainer addSubview: uisl_profileTimeBar];
+    [uiv_detailViewContainer addSubview: uisl_profileTimeBar];
 }
 
 #pragma mark Add gesture control to profile video
@@ -669,11 +721,11 @@ static NSUInteger kFrameFixer = 1;
 {
     swipeProfileMovieUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(playProfileMovie:)];
     swipeProfileMovieUp.direction = UISwipeGestureRecognizerDirectionUp;
-    [uiv_detailVideoContainer addGestureRecognizer: swipeProfileMovieUp];
+    [uiv_detailViewContainer addGestureRecognizer: swipeProfileMovieUp];
     
     swipeProfileMovieDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(pauseProfileMovie:)];
     swipeProfileMovieDown.direction = UISwipeGestureRecognizerDirectionDown;
-    [uiv_detailVideoContainer addGestureRecognizer: swipeProfileMovieDown];
+    [uiv_detailViewContainer addGestureRecognizer: swipeProfileMovieDown];
 }
 // Action of gestures on profile movie
 - (void)playProfileMovie:(UIGestureRecognizer *)gesture
@@ -690,24 +742,30 @@ static NSUInteger kFrameFixer = 1;
 - (void)closeProfileMovie:(id)sender
 {
     UIButton *closeBtn = sender;
-    [UIView animateWithDuration:0.33 animations:^{
-        uiv_detailVideoContainer.frame = CGRectMake(825, 300, 181, 181);
-        profilePlayerLayer.opacity = 0.0;
-        uiv_detailVideoContainer.backgroundColor = [UIColor clearColor];
-        closeBtn.alpha = 0.0;
-        uisl_profileTimeBar.alpha = 0.0;
+    [UIView animateWithDuration:0.2 animations:^(void){
+        uiv_detailViewContainer.backgroundColor = [UIColor clearColor];
     } completion:^(BOOL finished){
-        [closeBtn removeFromSuperview];
-        [uiv_detailVideoContainer removeFromSuperview];
-        uiv_detailVideoContainer.frame = CGRectMake(20, 55, 200, 200);
-        [uiv_profileContainer insertSubview:uiv_detailVideoContainer aboveSubview:uiiv_profileDetail];
-        [uiv_detailVideoContainer removeGestureRecognizer:swipeProfileMovieDown];
-        [uiv_detailVideoContainer removeGestureRecognizer:swipeProfileMovieUp];
-        [uiv_detailVideoContainer removeGestureRecognizer:tapDetailVideo];
-        [myAVPlayer play];
-        [uisl_profileTimeBar removeFromSuperview];
-        uisl_profileTimeBar = nil;
-        [self hideProfileDetail];
+        
+        [UIView animateWithDuration:0.33 animations:^{
+            profilePlayerLayer.opacity = 0.0;
+            uiv_profileVideoContainer.alpha = 0.0;
+            closeBtn.alpha = 0.0;
+            uisl_profileTimeBar.alpha = 0.0;
+            uiv_detailViewContainer.frame = CGRectMake(812, 294, 200, 200);
+        } completion:^(BOOL finished){
+            [closeBtn removeFromSuperview];
+            [uiv_detailViewContainer removeFromSuperview];
+            uiv_detailViewContainer.frame = CGRectMake(20, 55, 200, 200);
+            [uiv_profileContainer insertSubview:uiv_detailViewContainer aboveSubview:uiiv_profileDetail];
+            [uiv_detailViewContainer removeGestureRecognizer:swipeProfileMovieDown];
+            [uiv_detailViewContainer removeGestureRecognizer:swipeProfileMovieUp];
+            [uiv_detailViewContainer removeGestureRecognizer:tapDetailVideo];
+            [myAVPlayer play];
+            [uisl_profileTimeBar removeFromSuperview];
+            uisl_profileTimeBar = nil;
+            [self hideProfileDetail];
+        }];
+        
     }];
 }
 

@@ -44,6 +44,7 @@
 @property (nonatomic, retain) IBOutlet UIView                   *uiv_movieViewBlack;
 @property (retain, nonatomic) IBOutlet UILabel                  *uil_version;
 @property (nonatomic, retain) IBOutlet UISegmentedControl       *movieBtns;
+@property (weak, nonatomic) IBOutlet UIImageView *autodesk_logo;
 
 @property (nonatomic, retain) NSArray                           *arr_Timecode;
 @property (nonatomic) NSUInteger                                movieTag;
