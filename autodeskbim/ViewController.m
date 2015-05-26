@@ -9,9 +9,6 @@
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CoreGraphics/CoreGraphics.h>
-#import "AppDelegate.h"
-
-static NSUInteger kFrameFixer = 1;
 
 @interface ViewController ()
 
@@ -66,6 +63,8 @@ static NSUInteger kFrameFixer = 1;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
     // Check app's version num
     [UIApplication sharedApplication].statusBarHidden = YES;
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
@@ -80,17 +79,6 @@ static NSUInteger kFrameFixer = 1;
     
     // make black moviethumb transparent
     uiv_movieViewBlack.alpha = 0.0;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        // Set up Time array for movie's secitons
-        arr_Timecode = [[NSArray alloc] initWithObjects:
-                        [NSNumber numberWithFloat:0], //intro
-                        [NSNumber numberWithFloat:50+kFrameFixer], //map
-                        [NSNumber numberWithFloat:61+kFrameFixer], // cont - OK
-                        [NSNumber numberWithFloat:92+kFrameFixer], //2 level
-                        [NSNumber numberWithFloat:128+kFrameFixer], //glass
-                        nil];
-    });
     
     // Listen avmovie player reach the end of movies
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -107,11 +95,24 @@ static NSUInteger kFrameFixer = 1;
         label.transform = CGAffineTransformMakeTranslation(0.0, 3.0);
     }
     [movieBtns setContentPositionAdjustment:UIOffsetMake(0, 2) forSegmentType:UISegmentedControlSegmentAny barMetrics:UIBarMetricsDefault];
+    
+    NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"films"    ofType:@"plist"];
+    _arr_filmsFromPlist = [NSArray arrayWithContentsOfFile:sourcePath];
+    
+    sourcePath = [[NSBundle mainBundle] pathForResource:@"chapters"    ofType:@"plist"];
+    _arr_ChapterInfo = [NSArray arrayWithContentsOfFile:sourcePath];
+    
+    arr_Timecode = [[NSMutableArray alloc] init];
+    _arr_ChapterTitles = [[NSMutableArray alloc] init];
 }
 
 #pragma mark - Play Move
 #pragma mark Init AvPlayer and play the movie
 -(IBAction)playThisMovie:(id)sender {
+    
+    _arr_TimecodeRaw = nil;
+    [arr_Timecode removeAllObjects];
+    [_arr_ChapterTitles removeAllObjects];
     
     movieTag = [sender tag];
     
@@ -122,13 +123,23 @@ static NSUInteger kFrameFixer = 1;
     url = nil;
     
     //Set movie file accroding to the movie tag
-    if ([sender tag]==0) {
-        url = [[NSBundle mainBundle] pathForResource:@"Autodesk_DestinationBimCity_BuildingDesign_HD" ofType:@"mov"];
-    } else if ([sender tag]==1) {
-        url = [[NSBundle mainBundle] pathForResource:@"Autodesk_DestinationBimCity_Construction_HD" ofType:@"mov"];
-    } else {
-        url = [[NSBundle mainBundle] pathForResource:@"Autodesk_DestinationBimCity_Infrastructure_HD" ofType:@"mov"];
+    NSString *name = [[_arr_filmsFromPlist [ [sender tag] ] objectForKey:@"filmname"] stringByDeletingPathExtension];
+    NSString *extension = [[_arr_filmsFromPlist [ [sender tag] ] objectForKey:@"filmname"] pathExtension];
+    url = [[NSBundle mainBundle] pathForResource:name ofType:extension];
+    
+    _arr_TimecodeRaw = [_arr_ChapterInfo[ [sender tag] ] objectForKey:@"chapters"];
+    for (NSArray* arr in _arr_TimecodeRaw) {
+        for (NSDictionary* dict in arr) {
+            [arr_Timecode addObject:[dict objectForKey:@"begintime"]];
+            [_arr_ChapterTitles addObject:[dict objectForKey:@"title"]];
+        }
     }
+    
+    for(int i=0;i<_arr_ChapterTitles.count;i++) {
+        [movieBtns setTitle:_arr_ChapterTitles[i] forSegmentAtIndex:i];
+    }
+    
+    NSLog(@"%@", _arr_ChapterTitles);
     
     [self createMainAVPlayer:url];
     [self addGestureToAvPlayer];
@@ -378,6 +389,9 @@ static NSUInteger kFrameFixer = 1;
  */
 - (void)updateSliderAndTimelabel
 {
+
+    NSLog(@"seconds = %f", CMTimeGetSeconds(myAVPlayer.currentTime));
+    
     // If porfile movie is loaded then only loop profile movie
     if (uiv_detailViewContainer.frame.size.width > 1000) {
         uisl_profileTimeBar.maximumValue = CMTimeGetSeconds([[profilePlayer.currentItem asset] duration]);
@@ -390,6 +404,7 @@ static NSUInteger kFrameFixer = 1;
         
         NSNumber *currentTime = [NSNumber numberWithFloat:CMTimeGetSeconds(myAVPlayer.currentTime)];
         int segIndex = 0;
+        
         for (NSNumber *time in arr_Timecode)
         {
             if ([currentTime floatValue] <= [time floatValue])
@@ -601,19 +616,12 @@ static NSUInteger kFrameFixer = 1;
     NSLog(@"should load detail video");
     int index = (int)gesture.view.tag;
     NSString *videoUrl;
-    switch (index) {
-        case 0:
-            videoUrl = [[NSBundle mainBundle] pathForResource:@"2015_02_27_Autodesk_BimCity_CharacterProfile_AnnaJones_HD" ofType:@"mov"];
-            break;
-        case 1:
-            videoUrl = [[NSBundle mainBundle] pathForResource:@"2015_02_27_Autodesk_BimCity_CharacterProfile_GaryBlogg_HD" ofType:@"mov"];
-            break;
-        case 2:
-            videoUrl = [[NSBundle mainBundle] pathForResource:@"2015_02_27_Autodesk_BimCity_CharacterProfile_CharlesSmith_HD" ofType:@"mov"];
-            break;
-        default:
-            break;
-    }
+    
+    //Set movie file accroding to the movie tag
+    NSString *name = [[_arr_filmsFromPlist [index] objectForKey:@"profilename"] stringByDeletingPathExtension];
+    NSString *extension = [[_arr_filmsFromPlist [index] objectForKey:@"profilename"] pathExtension];
+    videoUrl = [[NSBundle mainBundle] pathForResource:name ofType:extension];
+    
     [uiv_detailViewContainer removeFromSuperview];
     [self.view addSubview: uiv_detailViewContainer];
     uiv_detailViewContainer.frame = CGRectMake(812, 290, 200, 200);
@@ -809,9 +817,6 @@ static NSUInteger kFrameFixer = 1;
     [self dismissViewControllerAnimated:YES completion:^{   }];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-}
-
 #pragma mark - Clean Memory
 
 -(void)didReceiveMessage:(NSString *)message {
@@ -822,6 +827,7 @@ static NSUInteger kFrameFixer = 1;
 }
 
 - (void)viewDidUnload {
+    
     [self setUib_playBtn3:nil];
     [self setUib_playBtn2:nil];
     [self setUiiv_movieThumb3:nil];

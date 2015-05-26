@@ -46,7 +46,12 @@
 @property (nonatomic, retain) IBOutlet UISegmentedControl       *movieBtns;
 @property (weak, nonatomic) IBOutlet UIImageView *autodesk_logo;
 
-@property (nonatomic, retain) NSArray                           *arr_Timecode;
+@property (nonatomic, retain) NSArray                           *arr_TimecodeRaw;
+@property (nonatomic, retain) NSMutableArray                    *arr_Timecode;
+@property (nonatomic, retain) NSArray                           *arr_ChapterInfo;
+@property (nonatomic, retain) NSMutableArray                    *arr_ChapterTitles;
+@property (nonatomic, retain) NSArray                           *arr_SelectedChapter;
+@property (nonatomic, retain) NSArray                           *arr_filmsFromPlist;
 @property (nonatomic) NSUInteger                                movieTag;
 @property (nonatomic, retain) NSString                          *url;
 

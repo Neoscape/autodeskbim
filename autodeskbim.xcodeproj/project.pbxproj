@@ -21,6 +21,8 @@
 		82F4862E1B0131E600C5EBAF /* grfx-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F4862C1B0131E600C5EBAF /* grfx-close@2x.png */; };
 		82F486311B01343F00C5EBAF /* autodesk-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F4862F1B01343F00C5EBAF /* autodesk-logo.png */; };
 		82F486321B01343F00C5EBAF /* autodesk-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F486301B01343F00C5EBAF /* autodesk-logo@2x.png */; };
+		889D1E181B14C80E0027FC17 /* films.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889D1E171B14C80E0027FC17 /* films.plist */; };
+		889D1E1A1B14C82B0027FC17 /* chapters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889D1E191B14C82B0027FC17 /* chapters.plist */; };
 		88F5BAB81AF95EF200454F5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BAB71AF95EF200454F5B /* main.m */; };
 		88F5BABB1AF95EF200454F5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BABA1AF95EF200454F5B /* AppDelegate.m */; };
 		88F5BABE1AF95EF200454F5B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BABD1AF95EF200454F5B /* ViewController.m */; };
@@ -28,7 +30,6 @@
 		88F5BAC31AF95EF200454F5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BAC21AF95EF200454F5B /* Images.xcassets */; };
 		88F5BAC61AF95EF200454F5B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BAC41AF95EF200454F5B /* LaunchScreen.xib */; };
 		88F5BAD21AF95EF200454F5B /* autodeskbimTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BAD11AF95EF200454F5B /* autodeskbimTests.m */; };
-		88F5BB0B1AF95F5E00454F5B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BADF1AF95F5E00454F5B /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		88F5BB151AF95F5E00454F5B /* TradeGothicLTStd-Cn18.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BAEF1AF95F5E00454F5B /* TradeGothicLTStd-Cn18.otf */; };
 		88F5BB161AF95F5E00454F5B /* bg-Main-Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BAF11AF95F5E00454F5B /* bg-Main-Menu.png */; };
 		88F5BB171AF95F5E00454F5B /* bg-Main-Menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BAF21AF95F5E00454F5B /* bg-Main-Menu@2x.png */; };
@@ -82,6 +83,8 @@
 		82F4862C1B0131E600C5EBAF /* grfx-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grfx-close@2x.png"; sourceTree = "<group>"; };
 		82F4862F1B01343F00C5EBAF /* autodesk-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "autodesk-logo.png"; sourceTree = "<group>"; };
 		82F486301B01343F00C5EBAF /* autodesk-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "autodesk-logo@2x.png"; sourceTree = "<group>"; };
+		889D1E171B14C80E0027FC17 /* films.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = films.plist; path = src/films.plist; sourceTree = "<group>"; };
+		889D1E191B14C82B0027FC17 /* chapters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = chapters.plist; path = src/chapters.plist; sourceTree = "<group>"; };
 		88F5BAB21AF95EF200454F5B /* autodeskbim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = autodeskbim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F5BAB61AF95EF200454F5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88F5BAB71AF95EF200454F5B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -95,8 +98,6 @@
 		88F5BACB1AF95EF200454F5B /* autodeskbimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = autodeskbimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F5BAD01AF95EF200454F5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88F5BAD11AF95EF200454F5B /* autodeskbimTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = autodeskbimTests.m; sourceTree = "<group>"; };
-		88F5BADE1AF95F5E00454F5B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		88F5BADF1AF95F5E00454F5B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		88F5BAEF1AF95F5E00454F5B /* TradeGothicLTStd-Cn18.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TradeGothicLTStd-Cn18.otf"; sourceTree = "<group>"; };
 		88F5BAF11AF95F5E00454F5B /* bg-Main-Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-Main-Menu.png"; sourceTree = "<group>"; };
 		88F5BAF21AF95F5E00454F5B /* bg-Main-Menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-Main-Menu@2x.png"; sourceTree = "<group>"; };
@@ -182,6 +183,8 @@
 				88F5BAE61AF95F5E00454F5B /* src */,
 				88F5BB081AF95F5E00454F5B /* xhMediaViewController.h */,
 				88F5BB091AF95F5E00454F5B /* xhMediaViewController.m */,
+				889D1E171B14C80E0027FC17 /* films.plist */,
+				889D1E191B14C82B0027FC17 /* chapters.plist */,
 				88F5BAB91AF95EF200454F5B /* AppDelegate.h */,
 				88F5BABA1AF95EF200454F5B /* AppDelegate.m */,
 				88F5BABC1AF95EF200454F5B /* ViewController.h */,
@@ -223,8 +226,6 @@
 		88F5BADB1AF95F5E00454F5B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				88F5BADE1AF95F5E00454F5B /* Reachability.h */,
-				88F5BADF1AF95F5E00454F5B /* Reachability.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -393,6 +394,7 @@
 				88F5BB331AFA446C00454F5B /* bg-Loading@2x.png in Resources */,
 				88F5BB181AF95F5E00454F5B /* bg-playback-bottom.png in Resources */,
 				88F5BB261AF95F5E00454F5B /* profile-anna-jones.png in Resources */,
+				889D1E1A1B14C82B0027FC17 /* chapters.plist in Resources */,
 				82D921191AFC040500406C74 /* 2015_02_27_Autodesk_BimCity_CharacterProfile_AnnaJones_HD.mov in Resources */,
 				88F5BB271AF95F5E00454F5B /* profile-anna-jones@2x.png in Resources */,
 				88F5BAC11AF95EF200454F5B /* Main.storyboard in Resources */,
@@ -407,6 +409,7 @@
 				82F486291B012F6100C5EBAF /* grfx-dot-detail.png in Resources */,
 				88F5BB221AF95F5E00454F5B /* icon-play.png in Resources */,
 				88F5BB231AF95F5E00454F5B /* icon-play@2x.png in Resources */,
+				889D1E181B14C80E0027FC17 /* films.plist in Resources */,
 				88F5BB1D1AF95F5E00454F5B /* bttn-construction@2x.png in Resources */,
 				88F5BB201AF95F5E00454F5B /* bttn-transportation.png in Resources */,
 				88F5BB2A1AF95F5E00454F5B /* profile-gary blogg.png in Resources */,
@@ -438,7 +441,6 @@
 				88F5BABB1AF95EF200454F5B /* AppDelegate.m in Sources */,
 				88F5BAB81AF95EF200454F5B /* main.m in Sources */,
 				88F5BB2C1AF95F5E00454F5B /* xhMediaViewController.m in Sources */,
-				88F5BB0B1AF95F5E00454F5B /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = autodeskbim/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ac7e9baa-2c52-4e22-9cf0-21224a54a4e7";
@@ -585,7 +587,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Neoscape, Incorporated";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Neoscape, Incorporated";
 				INFOPLIST_FILE = autodeskbim/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ac7e9baa-2c52-4e22-9cf0-21224a54a4e7";
