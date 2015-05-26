@@ -50,7 +50,7 @@
 @synthesize uiiv_movieThumb3;
 @synthesize url, movieTag;
 // movie controls
-@synthesize uib_playBtn1, uiiv_movieThumb1, delegate;
+@synthesize uib_playBtn1, uiiv_movieThumb1;
 @synthesize uiv_movieViewTop, uiv_movieViewBottom, uiv_movieViewBlack, movieBtns, arr_Timecode;
 // Version label
 @synthesize uil_version;
@@ -818,9 +818,6 @@
 }
 
 #pragma mark - Clean Memory
-
--(void)didReceiveMessage:(NSString *)message {
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

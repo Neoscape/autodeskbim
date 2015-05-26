@@ -18,13 +18,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-@protocol ModalViewDelegate
-
--(void) didReceiveMessage:(NSString *)message;
-
-@end
-
-@interface ViewController : UIViewController<ModalViewDelegate, UIGestureRecognizerDelegate>
+@interface ViewController : UIViewController <UIGestureRecognizerDelegate>
 {
     UISwipeGestureRecognizer        *swipeRightRecognizer;
     UISwipeGestureRecognizer        *swipeLeftRecognizer;
@@ -32,7 +26,6 @@
     UISwipeGestureRecognizer        *swipeDownRecognizer;
 }
 
-@property (nonatomic, retain) id<ModalViewDelegate>             delegate;
 @property (nonatomic, retain) IBOutlet UIButton                 *uib_playBtn1;
 @property (retain, nonatomic) IBOutlet UIButton                 *uib_playBtn2;
 @property (retain, nonatomic) IBOutlet UIButton                 *uib_playBtn3;
