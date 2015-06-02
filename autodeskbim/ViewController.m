@@ -669,12 +669,6 @@ static NSUInteger kFrameFixer = 1;
         profilePlayerLayer.transform = CATransform3DMakeTranslation(0.0, 17.0, 0.0);
         [uiv_profileVideoContainer.layer addSublayer: profilePlayerLayer];
         profilePlayerLayer.cornerRadius = 35;
-//        profilePlayerLayer.borderWidth = 2.0;
-//        profilePlayerLayer.borderColor = [UIColor whiteColor].CGColor;
-//        profilePlayerLayer.shadowColor = [UIColor whiteColor].CGColor;
-//        profilePlayerLayer.shadowOffset = CGSizeMake(10.0, 10.0);
-//        profilePlayerLayer.shadowOpacity = 1.0;
-//        profilePlayerLayer.shadowRadius = 5.0;
         profilePlayerLayer.masksToBounds = YES;
         
         // Fade in animation to profile movie player

@@ -36,9 +36,11 @@
 @property (nonatomic, retain) IBOutlet UIButton                 *uib_playBtn1;
 @property (retain, nonatomic) IBOutlet UIButton                 *uib_playBtn2;
 @property (retain, nonatomic) IBOutlet UIButton                 *uib_playBtn3;
+@property (weak, nonatomic)   IBOutlet UIButton                 *uib_playBtn4;
 @property (nonatomic, retain) IBOutlet UIImageView              *uiiv_movieThumb1;
 @property (retain, nonatomic) IBOutlet UIImageView              *uiiv_movieThumb2;
 @property (retain, nonatomic) IBOutlet UIImageView              *uiiv_movieThumb3;
+@property (weak, nonatomic)   IBOutlet UIImageView              *uiiv_movieThumb4;
 @property (nonatomic, retain) IBOutlet UIView                   *uiv_movieViewTop;
 @property (nonatomic, retain) IBOutlet UIView                   *uiv_movieViewBottom;
 @property (nonatomic, retain) IBOutlet UIView                   *uiv_movieViewBlack;

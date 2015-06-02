@@ -34,6 +34,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="superHero.png" id="MLc-lg-yTT">
+                                <rect key="frame" x="358" y="552" width="310" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" id="or5-bn-68O" userLabel="Custom Button - PLAY">
                                 <rect key="frame" x="28" y="287" width="308" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -47,21 +51,6 @@
                                 </state>
                                 <connections>
                                     <action selector="playThisMovie:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j7L-k2-toE"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.69999998807907104" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" id="MrF-Av-qNh" userLabel="Custom Button - PLAY">
-                                <rect key="frame" x="358" y="287" width="308" height="174"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                <state key="normal" backgroundImage="icon-play.png">
-                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" backgroundImage="MH_play.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playThisMovie:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i3v-SD-UZf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.69999998807907104" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" id="iCk-PG-MF3" userLabel="Custom Button - PLAY">
@@ -78,6 +67,18 @@
                                 <connections>
                                     <action selector="playThisMovie:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TZK-2a-7Or"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.69999998807907104" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" id="CPO-BV-zUL" userLabel="Custom Button - PLAY">
+                                <rect key="frame" x="359" y="552" width="308" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                <state key="normal" backgroundImage="icon-play.png">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="MH_play.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                             <view contentMode="scaleAspectFit" id="uoc-8z-8gu" userLabel="View - Movie Top">
                                 <rect key="frame" x="-20" y="-116" width="1064" height="116"/>
@@ -128,6 +129,21 @@
                                 <rect key="frame" x="313" y="55" width="399" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" alpha="0.69999998807907104" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" id="MrF-Av-qNh" userLabel="Custom Button - PLAY">
+                                <rect key="frame" x="226" y="297" width="308" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                <state key="normal" backgroundImage="icon-play.png">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="MH_play.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playThisMovie:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i3v-SD-UZf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -139,9 +155,10 @@
                         <outlet property="uib_playBtn1" destination="or5-bn-68O" id="hvA-KX-VXO"/>
                         <outlet property="uib_playBtn2" destination="MrF-Av-qNh" id="Ytq-QH-p4u"/>
                         <outlet property="uib_playBtn3" destination="iCk-PG-MF3" id="Tdw-Nj-4KB"/>
+                        <outlet property="uib_playBtn4" destination="CPO-BV-zUL" id="K4V-18-fK7"/>
                         <outlet property="uiiv_movieThumb1" destination="Esg-T2-OcL" id="qUy-PV-Qhr"/>
                         <outlet property="uiiv_movieThumb2" destination="E4a-Gy-c1n" id="n0x-tr-YWd"/>
-                        <outlet property="uiiv_movieThumb3" destination="I5f-S2-sqx" id="DLt-kw-sbA"/>
+                        <outlet property="uiiv_movieThumb4" destination="MLc-lg-yTT" id="8Sx-PI-b7L"/>
                         <outlet property="uil_version" destination="CqB-dz-9ac" id="uXA-G7-iSR"/>
                         <outlet property="uiv_movieViewBlack" destination="XZg-eh-zXk" id="ndW-7W-feg"/>
                         <outlet property="uiv_movieViewBottom" destination="XW8-gU-HSI" id="Q74-i6-Rbc"/>
@@ -164,6 +181,7 @@
         <image name="bttn-engineering.png" width="314" height="182"/>
         <image name="bttn-transportation.png" width="314" height="182"/>
         <image name="icon-play.png" width="314" height="182"/>
+        <image name="superHero.png" width="314" height="182"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
