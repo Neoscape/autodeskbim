@@ -33,13 +33,12 @@
 @property (nonatomic, retain) IBOutlet UIImageView              *uiiv_movieThumb1;
 @property (retain, nonatomic) IBOutlet UIImageView              *uiiv_movieThumb2;
 @property (retain, nonatomic) IBOutlet UIImageView              *uiiv_movieThumb3;
-@property (weak, nonatomic)   IBOutlet UIImageView              *uiiv_movieThumb4;
 @property (nonatomic, retain) IBOutlet UIView                   *uiv_movieViewTop;
 @property (nonatomic, retain) IBOutlet UIView                   *uiv_movieViewBottom;
 @property (nonatomic, retain) IBOutlet UIView                   *uiv_movieViewBlack;
 @property (retain, nonatomic) IBOutlet UILabel                  *uil_version;
 @property (nonatomic, retain) IBOutlet UISegmentedControl       *movieBtns;
-@property (weak, nonatomic) IBOutlet UIImageView *autodesk_logo;
+@property (weak, nonatomic)   IBOutlet UIImageView              *autodesk_logo;
 
 @property (nonatomic, retain) NSArray                           *arr_TimecodeRaw;
 @property (nonatomic, retain) NSMutableArray                    *arr_Timecode;
@@ -47,7 +46,7 @@
 @property (nonatomic, retain) NSMutableArray                    *arr_ChapterTitles;
 @property (nonatomic, retain) NSArray                           *arr_SelectedChapter;
 @property (nonatomic, retain) NSArray                           *arr_filmsFromPlist;
-@property (nonatomic) NSUInteger                                movieTag;
+@property (nonatomic)         NSUInteger                        movieTag;
 @property (nonatomic, retain) NSString                          *url;
 
 -(void)dismissModal;

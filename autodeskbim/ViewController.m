@@ -51,7 +51,6 @@
 @synthesize uiiv_movieThumb1;
 @synthesize uiiv_movieThumb2;
 @synthesize uiiv_movieThumb3;
-@synthesize uiiv_movieThumb4;
 @synthesize url, movieTag;
 @synthesize uiv_movieViewTop, uiv_movieViewBottom, uiv_movieViewBlack, movieBtns, arr_Timecode;
 // Version label
@@ -157,7 +156,7 @@
         [self.view bringSubviewToFront:uiiv_movieThumb3];
         uiv_movieViewBlack.frame = CGRectMake(686, 287, 314, 185);
     } else if (movieTag==3){
-        uiv_movieViewBlack.frame = CGRectMake(358, 552, 314, 185);
+        uiv_movieViewBlack.frame = CGRectMake(682, 668, 308, 80);
     }
     
     UIViewAnimationOptions options = UIViewAnimationOptionAllowUserInteraction  | UIViewAnimationOptionCurveEaseInOut;
@@ -173,8 +172,6 @@
                              uiiv_movieThumb2.frame = CGRectMake(0, 86, 1024, 576);
                          } else if ([sender tag]==2) {
                              uiiv_movieThumb3.frame = CGRectMake(0, 86, 1024, 576);
-                         } else {
-                             uiiv_movieThumb4.frame = CGRectMake(0, 86, 1024, 576);
                          }
                          
                          uiv_movieViewBlack.alpha = 1.0;
@@ -253,7 +250,6 @@
                          uiiv_movieThumb1.frame = CGRectMake(26, 284, 314, 180);
                          uiiv_movieThumb2.frame = CGRectMake(354, 284, 314, 180);
                          uiiv_movieThumb3.frame = CGRectMake(682, 284, 314, 180);
-                         uiiv_movieThumb4.frame = CGRectMake(353, 552, 314, 180);
                          
                          if (movieTag==0) {
                              uiv_movieViewBlack.frame = CGRectMake(26, 284, 314, 180);
@@ -262,7 +258,7 @@
                          } else if (movieTag==2){
                              uiv_movieViewBlack.frame = CGRectMake(682, 284, 314, 180);
                          } else {
-                             uiv_movieViewBlack.frame = CGRectMake(353, 552, 341, 180);
+                             uiv_movieViewBlack.frame = CGRectMake(682, 668, 308, 80);
                          }
                          uiv_movieViewBlack.alpha = 0.0;
                          uiv_movieViewBottom.transform = CGAffineTransformIdentity;
