@@ -44,13 +44,15 @@
 }
 
 //logo image
+@synthesize uib_playBtn1;
 @synthesize uib_playBtn2;
 @synthesize uib_playBtn3;
+@synthesize uib_playBtn4;
+@synthesize uiiv_movieThumb1;
 @synthesize uiiv_movieThumb2;
 @synthesize uiiv_movieThumb3;
+@synthesize uiiv_movieThumb4;
 @synthesize url, movieTag;
-// movie controls
-@synthesize uib_playBtn1, uiiv_movieThumb1;
 @synthesize uiv_movieViewTop, uiv_movieViewBottom, uiv_movieViewBlack, movieBtns, arr_Timecode;
 // Version label
 @synthesize uil_version;
@@ -119,7 +121,7 @@
     uib_playBtn1.hidden = YES;
     uib_playBtn2.hidden = YES;
     uib_playBtn3.hidden = YES;
-    
+    uib_playBtn4.hidden = YES;
     url = nil;
     
     //Set movie file accroding to the movie tag
@@ -154,6 +156,8 @@
     } else if (movieTag==2){
         [self.view bringSubviewToFront:uiiv_movieThumb3];
         uiv_movieViewBlack.frame = CGRectMake(686, 287, 314, 185);
+    } else if (movieTag==3){
+        uiv_movieViewBlack.frame = CGRectMake(358, 552, 314, 185);
     }
     
     UIViewAnimationOptions options = UIViewAnimationOptionAllowUserInteraction  | UIViewAnimationOptionCurveEaseInOut;
@@ -165,12 +169,12 @@
                          
                          if ([sender tag]==0) {
                              uiiv_movieThumb1.frame = CGRectMake(0, 86, 1024, 576);
-                             
                          } else if ([sender tag]==1) {
                              uiiv_movieThumb2.frame = CGRectMake(0, 86, 1024, 576);
-                             
-                         } else {
+                         } else if ([sender tag]==2) {
                              uiiv_movieThumb3.frame = CGRectMake(0, 86, 1024, 576);
+                         } else {
+                             uiiv_movieThumb4.frame = CGRectMake(0, 86, 1024, 576);
                          }
                          
                          uiv_movieViewBlack.alpha = 1.0;
@@ -192,7 +196,9 @@
                      completion:^(BOOL finished) {
                          [self.view addSubview: uiv_myPlayerContainer];
                          [myAVPlayer play];
-                         [self createUserProfleBtn:(int)[sender tag]];
+                         if ([sender tag] != 3) {
+                             [self createUserProfleBtn:(int)[sender tag]];
+                         }
                      }];
     
 }
@@ -247,6 +253,7 @@
                          uiiv_movieThumb1.frame = CGRectMake(26, 284, 314, 180);
                          uiiv_movieThumb2.frame = CGRectMake(354, 284, 314, 180);
                          uiiv_movieThumb3.frame = CGRectMake(682, 284, 314, 180);
+                         uiiv_movieThumb4.frame = CGRectMake(353, 552, 314, 180);
                          
                          if (movieTag==0) {
                              uiv_movieViewBlack.frame = CGRectMake(26, 284, 314, 180);
@@ -254,6 +261,8 @@
                              uiv_movieViewBlack.frame = CGRectMake(354, 284, 314, 180);
                          } else if (movieTag==2){
                              uiv_movieViewBlack.frame = CGRectMake(682, 284, 314, 180);
+                         } else {
+                             uiv_movieViewBlack.frame = CGRectMake(353, 552, 341, 180);
                          }
                          uiv_movieViewBlack.alpha = 0.0;
                          uiv_movieViewBottom.transform = CGAffineTransformIdentity;
@@ -263,6 +272,7 @@
                          [self.view bringSubviewToFront:uib_playBtn3];
                          [self.view bringSubviewToFront:uib_playBtn2];
                          [self.view bringSubviewToFront:uib_playBtn1];
+                         [self.view bringSubviewToFront:uib_playBtn4];
                          
                          autodesk_logo.transform = CGAffineTransformIdentity;
                      }
@@ -270,6 +280,7 @@
                          uib_playBtn1.hidden = NO;
                          uib_playBtn2.hidden = NO;
                          uib_playBtn3.hidden = NO;
+                         uib_playBtn4.hidden = NO;
                          
                          uiv_movieViewTop.layer.cornerRadius = 0;
                          uiv_movieViewTop.layer.shadowOffset = CGSizeMake(0,0);
@@ -390,7 +401,7 @@
 - (void)updateSliderAndTimelabel
 {
 
-    NSLog(@"seconds = %f", CMTimeGetSeconds(myAVPlayer.currentTime));
+//    NSLog(@"seconds = %f", CMTimeGetSeconds(myAVPlayer.currentTime));
     
     // If porfile movie is loaded then only loop profile movie
     if (uiv_detailViewContainer.frame.size.width > 1000) {
