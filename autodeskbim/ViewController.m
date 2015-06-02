@@ -201,7 +201,9 @@
 }
 
 #pragma mark - Create Main AVPlayer
-
+/*
+ * Play main menu by using the file url
+ */
 - (void)createMainAVPlayer:(NSString *)movieUrl
 {
     if (uiv_myPlayerContainer) {
@@ -246,7 +248,9 @@
                          uib_closeMainPlayer.alpha = 0.0;
                          
                          movieBtns.selectedSegmentIndex = 0;
-                         
+                         /*
+                          * Reset all buttons and all UIImages frame
+                          */
                          uiiv_movieThumb1.frame = CGRectMake(26, 284, 314, 180);
                          uiiv_movieThumb2.frame = CGRectMake(354, 284, 314, 180);
                          uiiv_movieThumb3.frame = CGRectMake(682, 284, 314, 180);
@@ -313,6 +317,9 @@
 }
 
 #pragma mark Slider Action
+/*
+ * Main movie's slider
+ */
 - (void)createSlider
 {
     uisl_timerBar = [UISlider new];
@@ -350,12 +357,17 @@
         [profilePlayer pause];
         UISlider *slider = sender;
         CMTime newTime = CMTimeMakeWithSeconds(slider.value,600);
-        [profilePlayer seekToTime:newTime
-                  toleranceBefore:kCMTimeZero
-                   toleranceAfter:kCMTimeZero];
+        [profilePlayer  seekToTime:newTime
+                        toleranceBefore:kCMTimeZero
+                        toleranceAfter:kCMTimeZero];
+        
     }
 }
-
+/*
+ * Slider reaches the end
+ * If it's the main moive change the bottom highlighted section then loop the movie
+ * If it's profile moive, loop it
+ */
 - (void)finishedSliding:(id)sender
 {
     if ([sender tag] == 1)
@@ -396,9 +408,6 @@
  */
 - (void)updateSliderAndTimelabel
 {
-
-//    NSLog(@"seconds = %f", CMTimeGetSeconds(myAVPlayer.currentTime));
-    
     // If porfile movie is loaded then only loop profile movie
     if (uiv_detailViewContainer.frame.size.width > 1000) {
         uisl_profileTimeBar.maximumValue = CMTimeGetSeconds([[profilePlayer.currentItem asset] duration]);
@@ -435,21 +444,30 @@
 
 - (void)addGestureToAvPlayer
 {
+    /*
+     * Swipe from right to left load next section
+     */
     swipeRightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeNextSection:)];
     [swipeRightRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
     [swipeRightRecognizer setDelegate:self];
     [uiv_myPlayerContainer addGestureRecognizer:swipeRightRecognizer];
-    
+    /*
+     * Swipe from left to right load previous section
+     */
     swipeLeftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipePrevSection:)];
     [swipeLeftRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [swipeLeftRecognizer setDelegate:self];
     [uiv_myPlayerContainer addGestureRecognizer:swipeLeftRecognizer];
-    
+    /*
+     * Swipe from bottom to up resume playing moive
+     */
     swipeUpRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUpPlay:)];
     [swipeUpRecognizer setDirection:(UISwipeGestureRecognizerDirectionUp)];
     [swipeUpRecognizer setDelegate:self];
     [uiv_myPlayerContainer addGestureRecognizer:swipeUpRecognizer];
-    
+    /*
+     * Swipe from up to bottom to pause moive
+     */
     swipeDownRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDownPause:)];
     [swipeDownRecognizer setDirection:(UISwipeGestureRecognizerDirectionDown)];
     [swipeDownRecognizer setDelegate:self];
@@ -491,7 +509,6 @@
     uiv_profileContainer.transform = CGAffineTransformIdentity;
     [myAVPlayer play];
 }
-
 
 -(void)swipeDownPause:(id)sender
 {
@@ -616,7 +633,9 @@
         }];
     }];
 }
-
+/*
+ * Create profile video container and player
+ */
 - (void)tapVideoDetail:(UIGestureRecognizer *)gesture
 {
     [myAVPlayer pause];
@@ -675,7 +694,9 @@
         [uil_profile setTextColor:[UIColor whiteColor]];
         [uiv_profileVideoContainer addSubview: uil_profile];
         
-        
+        /*
+         * Create profile movie avplayer 
+         */
         profileItem = [AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath: videoUrl]];
         profilePlayer = [[AVPlayer alloc] initWithPlayerItem:profileItem];
         profilePlayerLayer = [AVPlayerLayer playerLayerWithPlayer:profilePlayer];
