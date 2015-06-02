@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Reachability.h"
 
 @interface AppDelegate ()
 
@@ -15,97 +14,10 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    // check for internet connection
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
-    
-    _internetReachable = [Reachability reachabilityForInternetConnection];
-    [_internetReachable startNotifier];
-    
-    // check if a pathway to a random host exists
-    _hostReachable = [Reachability reachabilityWithHostName: @"www.apple.com"];
-    [_hostReachable startNotifier];
-    
     return YES;
 }
-
-//////////////////////////
-// Webcheck when loaded //
-//////////////////////////
-//
-- (void) checkNetworkStatus:(NSNotification *)notice
-{
-    // called after network status changes
-    
-    NetworkStatus internetStatus = [_internetReachable currentReachabilityStatus];
-    switch (internetStatus)
-    
-    {
-        case NotReachable:
-        {
-            NSLog(@"The internet is down.");
-            internetActive = NO;
-            _isWirelessAvailable = @"NO";
-            break;
-            
-        }
-        case ReachableViaWiFi:
-        {
-            NSLog(@"The internet is working via WIFI.");
-            //	self.internetActive = YES;
-            internetActive = YES;
-            _isWirelessAvailable = @"YES";
-            break;
-            
-        }
-        case ReachableViaWWAN:
-        {
-            NSLog(@"The internet is working via WWAN.");
-            //	self.internetActive = YES;
-            internetActive = YES;
-            _isWirelessAvailable = @"YES";
-            break;
-            
-        }
-    }
-    
-    NetworkStatus hostStatus = [_hostReachable currentReachabilityStatus];
-    switch (hostStatus)
-    
-    {
-        case NotReachable:
-        {
-            NSLog(@"A gateway to the host server is down.");
-            //self.hostActive = NO;
-            internetActive = NO;
-            _isWirelessAvailable = @"NO";
-            break;
-            
-        }
-        case ReachableViaWiFi:
-        {
-            NSLog(@"A gateway to the host server is working via WIFI.");
-            //self.hostActive = YES;
-            internetActive = YES;
-            _isWirelessAvailable = @"YES";
-            break;
-            
-        }
-        case ReachableViaWWAN:
-        {
-            NSLog(@"A gateway to the host server is working via WWAN.");
-            //self.hostActive = YES;
-            internetActive = YES;			
-            _isWirelessAvailable = @"YES";
-            break;
-            
-        }
-    }
-}
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

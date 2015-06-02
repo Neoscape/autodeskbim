@@ -18,13 +18,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-@protocol ModalViewDelegate
-
--(void) didReceiveMessage:(NSString *)message;
-
-@end
-
-@interface ViewController : UIViewController<ModalViewDelegate, UIGestureRecognizerDelegate>
+@interface ViewController : UIViewController <UIGestureRecognizerDelegate>
 {
     UISwipeGestureRecognizer        *swipeRightRecognizer;
     UISwipeGestureRecognizer        *swipeLeftRecognizer;
@@ -32,7 +26,6 @@
     UISwipeGestureRecognizer        *swipeDownRecognizer;
 }
 
-@property (nonatomic, retain) id<ModalViewDelegate>             delegate;
 @property (nonatomic, retain) IBOutlet UIButton                 *uib_playBtn1;
 @property (retain, nonatomic) IBOutlet UIButton                 *uib_playBtn2;
 @property (retain, nonatomic) IBOutlet UIButton                 *uib_playBtn3;
@@ -48,7 +41,12 @@
 @property (nonatomic, retain) IBOutlet UISegmentedControl       *movieBtns;
 @property (weak, nonatomic) IBOutlet UIImageView *autodesk_logo;
 
-@property (nonatomic, retain) NSArray                           *arr_Timecode;
+@property (nonatomic, retain) NSArray                           *arr_TimecodeRaw;
+@property (nonatomic, retain) NSMutableArray                    *arr_Timecode;
+@property (nonatomic, retain) NSArray                           *arr_ChapterInfo;
+@property (nonatomic, retain) NSMutableArray                    *arr_ChapterTitles;
+@property (nonatomic, retain) NSArray                           *arr_SelectedChapter;
+@property (nonatomic, retain) NSArray                           *arr_filmsFromPlist;
 @property (nonatomic) NSUInteger                                movieTag;
 @property (nonatomic, retain) NSString                          *url;
 

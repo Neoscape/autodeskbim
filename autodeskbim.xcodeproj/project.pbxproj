@@ -24,6 +24,8 @@
 		82F4862E1B0131E600C5EBAF /* grfx-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F4862C1B0131E600C5EBAF /* grfx-close@2x.png */; };
 		82F486311B01343F00C5EBAF /* autodesk-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F4862F1B01343F00C5EBAF /* autodesk-logo.png */; };
 		82F486321B01343F00C5EBAF /* autodesk-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F486301B01343F00C5EBAF /* autodesk-logo@2x.png */; };
+		889D1E211B14EB2F0027FC17 /* chapters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889D1E1F1B14EB2F0027FC17 /* chapters.plist */; };
+		889D1E221B14EB2F0027FC17 /* films.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889D1E201B14EB2F0027FC17 /* films.plist */; };
 		88F5BAB81AF95EF200454F5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BAB71AF95EF200454F5B /* main.m */; };
 		88F5BABB1AF95EF200454F5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BABA1AF95EF200454F5B /* AppDelegate.m */; };
 		88F5BABE1AF95EF200454F5B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BABD1AF95EF200454F5B /* ViewController.m */; };
@@ -31,7 +33,6 @@
 		88F5BAC31AF95EF200454F5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BAC21AF95EF200454F5B /* Images.xcassets */; };
 		88F5BAC61AF95EF200454F5B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BAC41AF95EF200454F5B /* LaunchScreen.xib */; };
 		88F5BAD21AF95EF200454F5B /* autodeskbimTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BAD11AF95EF200454F5B /* autodeskbimTests.m */; };
-		88F5BB0B1AF95F5E00454F5B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BADF1AF95F5E00454F5B /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		88F5BB151AF95F5E00454F5B /* TradeGothicLTStd-Cn18.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BAEF1AF95F5E00454F5B /* TradeGothicLTStd-Cn18.otf */; };
 		88F5BB161AF95F5E00454F5B /* bg-Main-Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BAF11AF95F5E00454F5B /* bg-Main-Menu.png */; };
 		88F5BB171AF95F5E00454F5B /* bg-Main-Menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BAF21AF95F5E00454F5B /* bg-Main-Menu@2x.png */; };
@@ -55,7 +56,6 @@
 		88F5BB291AF95F5E00454F5B /* profile-charles-smith@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BB051AF95F5E00454F5B /* profile-charles-smith@2x.png */; };
 		88F5BB2A1AF95F5E00454F5B /* profile-gary blogg.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BB061AF95F5E00454F5B /* profile-gary blogg.png */; };
 		88F5BB2B1AF95F5E00454F5B /* profile-gary blogg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BB071AF95F5E00454F5B /* profile-gary blogg@2x.png */; };
-		88F5BB2C1AF95F5E00454F5B /* xhMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BB091AF95F5E00454F5B /* xhMediaViewController.m */; };
 		88F5BB321AFA446C00454F5B /* bg-Loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BB301AFA446C00454F5B /* bg-Loading.png */; };
 		88F5BB331AFA446C00454F5B /* bg-Loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BB311AFA446C00454F5B /* bg-Loading@2x.png */; };
 /* End PBXBuildFile section */
@@ -88,6 +88,8 @@
 		82F4862C1B0131E600C5EBAF /* grfx-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grfx-close@2x.png"; sourceTree = "<group>"; };
 		82F4862F1B01343F00C5EBAF /* autodesk-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "autodesk-logo.png"; sourceTree = "<group>"; };
 		82F486301B01343F00C5EBAF /* autodesk-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "autodesk-logo@2x.png"; sourceTree = "<group>"; };
+		889D1E1F1B14EB2F0027FC17 /* chapters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = chapters.plist; path = Data/chapters.plist; sourceTree = "<group>"; };
+		889D1E201B14EB2F0027FC17 /* films.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = films.plist; path = Data/films.plist; sourceTree = "<group>"; };
 		88F5BAB21AF95EF200454F5B /* autodeskbim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = autodeskbim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F5BAB61AF95EF200454F5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88F5BAB71AF95EF200454F5B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,8 +103,6 @@
 		88F5BACB1AF95EF200454F5B /* autodeskbimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = autodeskbimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F5BAD01AF95EF200454F5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88F5BAD11AF95EF200454F5B /* autodeskbimTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = autodeskbimTests.m; sourceTree = "<group>"; };
-		88F5BADE1AF95F5E00454F5B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		88F5BADF1AF95F5E00454F5B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		88F5BAEF1AF95F5E00454F5B /* TradeGothicLTStd-Cn18.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TradeGothicLTStd-Cn18.otf"; sourceTree = "<group>"; };
 		88F5BAF11AF95F5E00454F5B /* bg-Main-Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-Main-Menu.png"; sourceTree = "<group>"; };
 		88F5BAF21AF95F5E00454F5B /* bg-Main-Menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-Main-Menu@2x.png"; sourceTree = "<group>"; };
@@ -126,8 +126,6 @@
 		88F5BB051AF95F5E00454F5B /* profile-charles-smith@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-charles-smith@2x.png"; sourceTree = "<group>"; };
 		88F5BB061AF95F5E00454F5B /* profile-gary blogg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-gary blogg.png"; sourceTree = "<group>"; };
 		88F5BB071AF95F5E00454F5B /* profile-gary blogg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-gary blogg@2x.png"; sourceTree = "<group>"; };
-		88F5BB081AF95F5E00454F5B /* xhMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xhMediaViewController.h; sourceTree = "<group>"; };
-		88F5BB091AF95F5E00454F5B /* xhMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xhMediaViewController.m; sourceTree = "<group>"; };
 		88F5BB301AFA446C00454F5B /* bg-Loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-Loading.png"; sourceTree = "<group>"; };
 		88F5BB311AFA446C00454F5B /* bg-Loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-Loading@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +162,15 @@
 			name = films;
 			sourceTree = "<group>";
 		};
+		889D1E1E1B14EB080027FC17 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				889D1E1F1B14EB2F0027FC17 /* chapters.plist */,
+				889D1E201B14EB2F0027FC17 /* films.plist */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		88F5BAA91AF95EF200454F5B = {
 			isa = PBXGroup;
 			children = (
@@ -185,10 +192,8 @@
 		88F5BAB41AF95EF200454F5B /* autodeskbim */ = {
 			isa = PBXGroup;
 			children = (
-				88F5BADB1AF95F5E00454F5B /* Classes */,
+				889D1E1E1B14EB080027FC17 /* Data */,
 				88F5BAE61AF95F5E00454F5B /* src */,
-				88F5BB081AF95F5E00454F5B /* xhMediaViewController.h */,
-				88F5BB091AF95F5E00454F5B /* xhMediaViewController.m */,
 				88F5BAB91AF95EF200454F5B /* AppDelegate.h */,
 				88F5BABA1AF95EF200454F5B /* AppDelegate.m */,
 				88F5BABC1AF95EF200454F5B /* ViewController.h */,
@@ -225,15 +230,6 @@
 				88F5BAD01AF95EF200454F5B /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		88F5BADB1AF95F5E00454F5B /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				88F5BADE1AF95F5E00454F5B /* Reachability.h */,
-				88F5BADF1AF95F5E00454F5B /* Reachability.m */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		88F5BAE61AF95F5E00454F5B /* src */ = {
@@ -392,6 +388,7 @@
 				88F5BB1B1AF95F5E00454F5B /* bg-playback-top@2x.png in Resources */,
 				82D921231AFC0B0C00406C74 /* grfx-playhead@2x.png in Resources */,
 				82F4862A1B012F6100C5EBAF /* grfx-dot-detail@2x.png in Resources */,
+				889D1E221B14EB2F0027FC17 /* films.plist in Resources */,
 				88F5BB1A1AF95F5E00454F5B /* bg-playback-top.png in Resources */,
 				88F5BB161AF95F5E00454F5B /* bg-Main-Menu.png in Resources */,
 				88F5BB191AF95F5E00454F5B /* bg-playback-bottom@2x.png in Resources */,
@@ -425,6 +422,7 @@
 				88F5BB1F1AF95F5E00454F5B /* bttn-engineering@2x.png in Resources */,
 				88F5BB1E1AF95F5E00454F5B /* bttn-engineering.png in Resources */,
 				82F4862D1B0131E600C5EBAF /* grfx-close.png in Resources */,
+				889D1E211B14EB2F0027FC17 /* chapters.plist in Resources */,
 				88F5BAC31AF95EF200454F5B /* Images.xcassets in Resources */,
 				88F5BB281AF95F5E00454F5B /* profile-charles-smith.png in Resources */,
 				88F5BB291AF95F5E00454F5B /* profile-charles-smith@2x.png in Resources */,
@@ -449,8 +447,6 @@
 				88F5BABE1AF95EF200454F5B /* ViewController.m in Sources */,
 				88F5BABB1AF95EF200454F5B /* AppDelegate.m in Sources */,
 				88F5BAB81AF95EF200454F5B /* main.m in Sources */,
-				88F5BB2C1AF95F5E00454F5B /* xhMediaViewController.m in Sources */,
-				88F5BB0B1AF95F5E00454F5B /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +579,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = autodeskbim/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ac7e9baa-2c52-4e22-9cf0-21224a54a4e7";
@@ -597,7 +593,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Neoscape, Incorporated";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Neoscape, Incorporated";
 				INFOPLIST_FILE = autodeskbim/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ac7e9baa-2c52-4e22-9cf0-21224a54a4e7";
