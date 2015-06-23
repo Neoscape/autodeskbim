@@ -156,7 +156,7 @@
         [self.view bringSubviewToFront:uiiv_movieThumb3];
         uiv_movieViewBlack.frame = CGRectMake(686, 287, 314, 185);
     } else if (movieTag==3){
-        uiv_movieViewBlack.frame = CGRectMake(682, 668, 308, 80);
+        uiv_movieViewBlack.frame = CGRectMake(354, 668, 308, 80);
     }
     
     UIViewAnimationOptions options = UIViewAnimationOptionAllowUserInteraction  | UIViewAnimationOptionCurveEaseInOut;
@@ -262,7 +262,7 @@
                          } else if (movieTag==2){
                              uiv_movieViewBlack.frame = CGRectMake(682, 284, 314, 180);
                          } else {
-                             uiv_movieViewBlack.frame = CGRectMake(682, 668, 308, 80);
+                             uiv_movieViewBlack.frame = CGRectMake(354, 668, 308, 80);
                          }
                          uiv_movieViewBlack.alpha = 0.0;
                          uiv_movieViewBottom.transform = CGAffineTransformIdentity;
